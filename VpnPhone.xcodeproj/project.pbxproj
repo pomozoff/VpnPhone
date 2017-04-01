@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E81094521E8FB6490095D931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094511E8FB6490095D931 /* AppDelegate.swift */; };
-		E81094541E8FB6490095D931 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094531E8FB6490095D931 /* ViewController.swift */; };
 		E81094571E8FB6490095D931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81094551E8FB6490095D931 /* Main.storyboard */; };
 		E81094591E8FB6490095D931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E81094581E8FB6490095D931 /* Assets.xcassets */; };
 		E810945C1E8FB6490095D931 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E810945A1E8FB6490095D931 /* LaunchScreen.storyboard */; };
 		E81094671E8FB6490095D931 /* VpnPhoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094661E8FB6490095D931 /* VpnPhoneTests.swift */; };
+		E81094731E8FBC880095D931 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E81094721E8FBC880095D931 /* NetworkExtension.framework */; };
+		E81094781E8FE10B0095D931 /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094771E8FE10B0095D931 /* ConfigurationTableViewController.swift */; };
+		E810947C1E8FE2D40095D931 /* VpnConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810947B1E8FE2D40095D931 /* VpnConfiguration.swift */; };
+		E810947E1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810947D1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift */; };
+		E81094821E8FF02B0095D931 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */; };
+		E81094841E8FF1B70095D931 /* ConfigurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */; };
+		E8D3D1A81E8FF47500E2C656 /* ApplicationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810947F1E8FE4280095D931 /* ApplicationInitializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +34,6 @@
 /* Begin PBXFileReference section */
 		E810944E1E8FB6490095D931 /* VpnPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VpnPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81094511E8FB6490095D931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E81094531E8FB6490095D931 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E81094561E8FB6490095D931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E81094581E8FB6490095D931 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E810945B1E8FB6490095D931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +41,14 @@
 		E81094621E8FB6490095D931 /* VpnPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VpnPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81094661E8FB6490095D931 /* VpnPhoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnPhoneTests.swift; sourceTree = "<group>"; };
 		E81094681E8FB6490095D931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E81094721E8FBC880095D931 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		E81094741E8FBC880095D931 /* VpnPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VpnPhone.entitlements; sourceTree = "<group>"; };
+		E81094771E8FE10B0095D931 /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		E810947B1E8FE2D40095D931 /* VpnConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VpnConfiguration.swift; sourceTree = "<group>"; };
+		E810947D1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableDataSource.swift; sourceTree = "<group>"; };
+		E810947F1E8FE4280095D931 /* ApplicationInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInitializer.swift; sourceTree = "<group>"; };
+		E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E81094731E8FBC880095D931 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +76,7 @@
 				E81094501E8FB6490095D931 /* VpnPhone */,
 				E81094651E8FB6490095D931 /* VpnPhoneTests */,
 				E810944F1E8FB6490095D931 /* Products */,
+				E81094711E8FBC880095D931 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +93,14 @@
 			isa = PBXGroup;
 			children = (
 				E81094511E8FB6490095D931 /* AppDelegate.swift */,
-				E81094531E8FB6490095D931 /* ViewController.swift */,
-				E81094551E8FB6490095D931 /* Main.storyboard */,
-				E81094581E8FB6490095D931 /* Assets.xcassets */,
-				E810945A1E8FB6490095D931 /* LaunchScreen.storyboard */,
-				E810945D1E8FB6490095D931 /* Info.plist */,
+				E810947F1E8FE4280095D931 /* ApplicationInitializer.swift */,
+				E810947D1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift */,
+				E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */,
+				E81094771E8FE10B0095D931 /* ConfigurationTableViewController.swift */,
+				E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */,
+				E810947B1E8FE2D40095D931 /* VpnConfiguration.swift */,
+				E81094791E8FE26D0095D931 /* Resources */,
+				E810947A1E8FE2750095D931 /* Misc */,
 			);
 			path = VpnPhone;
 			sourceTree = "<group>";
@@ -96,6 +114,33 @@
 			path = VpnPhoneTests;
 			sourceTree = "<group>";
 		};
+		E81094711E8FBC880095D931 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E81094721E8FBC880095D931 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E81094791E8FE26D0095D931 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E81094551E8FB6490095D931 /* Main.storyboard */,
+				E810945A1E8FB6490095D931 /* LaunchScreen.storyboard */,
+				E81094581E8FB6490095D931 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E810947A1E8FE2750095D931 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				E810945D1E8FB6490095D931 /* Info.plist */,
+				E81094741E8FBC880095D931 /* VpnPhone.entitlements */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +148,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E810946B1E8FB6490095D931 /* Build configuration list for PBXNativeTarget "VpnPhone" */;
 			buildPhases = (
+				E81094851E8FF3750095D931 /* Swift Lint */,
 				E810944A1E8FB6490095D931 /* Sources */,
 				E810944B1E8FB6490095D931 /* Frameworks */,
 				E810944C1E8FB6490095D931 /* Resources */,
@@ -146,8 +192,13 @@
 				TargetAttributes = {
 					E810944D1E8FB6490095D931 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = S2MSZQUH3H;
+						DevelopmentTeam = 8ESG37HXHW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.VPNLite = {
+								enabled = 1;
+							};
+						};
 					};
 					E81094611E8FB6490095D931 = {
 						CreatedOnToolsVersion = 8.3;
@@ -196,13 +247,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E81094851E8FF3750095D931 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E810944A1E8FB6490095D931 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E81094541E8FB6490095D931 /* ViewController.swift in Sources */,
+				E810947E1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift in Sources */,
+				E8D3D1A81E8FF47500E2C656 /* ApplicationInitializer.swift in Sources */,
+				E81094841E8FF1B70095D931 /* ConfigurationTableViewCell.swift in Sources */,
+				E81094781E8FE10B0095D931 /* ConfigurationTableViewController.swift in Sources */,
 				E81094521E8FB6490095D931 /* AppDelegate.swift in Sources */,
+				E810947C1E8FE2D40095D931 /* VpnConfiguration.swift in Sources */,
+				E81094821E8FF02B0095D931 /* ConfigurationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,11 +417,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S2MSZQUH3H;
+				CODE_SIGN_ENTITLEMENTS = VpnPhone/VpnPhone.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8ESG37HXHW;
 				INFOPLIST_FILE = VpnPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.VpnPhone;
+				PRODUCT_BUNDLE_IDENTIFIER = local.none.vpn.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -356,11 +433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S2MSZQUH3H;
+				CODE_SIGN_ENTITLEMENTS = VpnPhone/VpnPhone.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8ESG37HXHW;
 				INFOPLIST_FILE = VpnPhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ru.akademon.VpnPhone;
+				PRODUCT_BUNDLE_IDENTIFIER = local.none.vpn.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -414,6 +494,7 @@
 				E810946D1E8FB6490095D931 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E810946E1E8FB6490095D931 /* Build configuration list for PBXNativeTarget "VpnPhoneTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +503,7 @@
 				E81094701E8FB6490095D931 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
