@@ -7,23 +7,25 @@
 //
 
 import UIKit
-import NetworkExtension
 
 class ConfigurationTableViewController: UITableViewController {
 
     // MARK: - Properties
 
-    weak var memoryConsumer: MemoryConsumer?
+    var dataSource: (DataSource & MemoryConsumer)!
     var showConfigurationSegueIdentifier: String!
 
     // MARK: - Life cycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        memoryConsumer?.didReceiveMemoryWarning()
+        dataSource.didReceiveMemoryWarning()
+    }
+
+    // MARK: - Actions
+
+    @IBAction func didTapOnAddConfiguration(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: showConfigurationSegueIdentifier, sender: nil)
     }
 
     // MARK: - Segue
@@ -34,39 +36,28 @@ class ConfigurationTableViewController: UITableViewController {
             return
         }
 
-        let cell = sender as! ConfigurationTableViewCell
         let vc = segue.destination as! ConfigurationViewController
+        vc.dataSource = dataSource
 
-        vc.vpn = cell.vpn
+        // FIXME: Этот г@#$код тоже для того, чтобы побыстрей написать.
+        if let vpnSource = sender as? VpnConfigured {
+            vc.vpn = vpnSource.vpn
+        }
     }
 
 }
 
-protocol Configurable {
+protocol DataView: class {
 
-    func configure()
+    func reloadData()
 
 }
-
-extension ConfigurationTableViewController: Configurable {
+extension ConfigurationTableViewController: DataView {
 
     // MARK: - Configurable
 
-    func configure() {
-        configureVpnManager()
-    }
-
-    // MARK: - Private
-
-    private func configureVpnManager() {
-        let manager = NEVPNManager.shared()
-        manager.loadFromPreferences { error in
-            guard error == nil else {
-                print("Error configuring a vpn manager: \(String(describing: error))")
-                return
-            }
-            print("Successfully configured a vpn manager")
-        }
+    func reloadData() {
+        tableView.reloadData()
     }
 
 }

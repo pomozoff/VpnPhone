@@ -18,6 +18,7 @@
 		E810947E1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810947D1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift */; };
 		E81094821E8FF02B0095D931 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */; };
 		E81094841E8FF1B70095D931 /* ConfigurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */; };
+		E829BD5D1E92F2AD009E8DAC /* ServerAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E829BD5C1E92F2AD009E8DAC /* ServerAddressViewController.swift */; };
 		E8D3D1A81E8FF47500E2C656 /* ApplicationInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E810947F1E8FE4280095D931 /* ApplicationInitializer.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		E810947F1E8FE4280095D931 /* ApplicationInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInitializer.swift; sourceTree = "<group>"; };
 		E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewCell.swift; sourceTree = "<group>"; };
+		E829BD5C1E92F2AD009E8DAC /* ServerAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAddressViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				E81094831E8FF1B70095D931 /* ConfigurationTableViewCell.swift */,
 				E81094771E8FE10B0095D931 /* ConfigurationTableViewController.swift */,
 				E81094811E8FF02B0095D931 /* ConfigurationViewController.swift */,
+				E829BD5C1E92F2AD009E8DAC /* ServerAddressViewController.swift */,
 				E810947B1E8FE2D40095D931 /* VpnConfiguration.swift */,
 				E81094791E8FE26D0095D931 /* Resources */,
 				E810947A1E8FE2750095D931 /* Misc */,
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E829BD5D1E92F2AD009E8DAC /* ServerAddressViewController.swift in Sources */,
 				E810947E1E8FE3AA0095D931 /* ConfigurationTableDataSource.swift in Sources */,
 				E8D3D1A81E8FF47500E2C656 /* ApplicationInitializer.swift in Sources */,
 				E81094841E8FF1B70095D931 /* ConfigurationTableViewCell.swift in Sources */,

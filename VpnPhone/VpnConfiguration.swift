@@ -8,20 +8,24 @@
 
 import Foundation
 
-protocol Vpn {
+struct VpnConfiguration {
 
-    var address: String? { get set }
-    var user: String? { get set }
-    var password: String? { get set }
+    var uuid = UUID()
+    var address: String = ""
+    var identity: Data?
 
 }
 
-struct VpnConfiguration: Vpn {
+extension VpnConfiguration: Equatable {}
 
-    var password: String?
+func == (lhs: VpnConfiguration, rhs: VpnConfiguration) -> Bool {
+    return lhs.uuid == rhs.uuid
+}
 
-    var user: String?
+extension VpnConfiguration: Hashable {
 
-    var address: String?
+    var hashValue: Int {
+        return uuid.hashValue
+    }
 
 }

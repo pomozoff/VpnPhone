@@ -13,7 +13,12 @@ class ConfigurationTableViewCell: UITableViewCell,
 
     // MARK: - VpnConfigured
 
-    var vpn: Vpn!
+    var vpn: VpnConfiguration? {
+        didSet {
+            textLabel?.text = vpn?.address
+            detailTextLabel?.text = nil
+        }
+    }
 
     // MARK: - Life cycle
 

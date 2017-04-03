@@ -14,10 +14,9 @@ protocol MemoryConsumer: class {
 
 }
 
-protocol DataSource {
+protocol DataSource: class {
 
-    associatedtype Element
-    var data: [Element] { get set }
+    func insert(new element: VpnConfiguration)
 
 }
 
@@ -25,9 +24,26 @@ class ConfigurationTableDataSource: NSObject,
                                     UITableViewDataSource,
                                     DataSource {
 
+    // MARK: - Proeprties
+
+    weak var dataView: DataView?
+
     // MARK: - DataSource
 
-    var data: [VpnConfiguration]
+    var data: [VpnConfiguration] {
+        didSet {
+            // FIXME: Для быстроты.
+            dataView?.reloadData()
+        }
+    }
+
+    func insert(new element: VpnConfiguration) {
+        if let index = data.index(of: element) {
+            data[index] = element
+        } else {
+            data.append(element)
+        }
+    }
 
     // MARK: - Life cycle
 
@@ -40,21 +56,21 @@ class ConfigurationTableDataSource: NSObject,
 
     // MARK: - UITableViewDataSource
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentidier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentidier, for: indexPath) as! ConfigurationTableViewCell
+
+        cell.vpn = data[indexPath.row]
+
         return cell
     }
 
     // MARK: - Private
 
     private let cellReuseIdentidier: String
-    private let savedData: [VpnConfiguration] = {
+    private let savedData = {
         // TODO: Read from User​Defaults
         return [VpnConfiguration]()
     }()

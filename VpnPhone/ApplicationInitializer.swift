@@ -27,11 +27,11 @@ class ApplicationInitializer: NSObject {
         let configurationViewController = navigationController.topViewController as! ConfigurationTableViewController
         let configurationDataSource = ConfigurationTableDataSource(cellReuseIdentidier: "Vpn Configuration Cell")
 
-        configurationViewController.tableView.dataSource = configurationDataSource
-        configurationViewController.memoryConsumer = configurationDataSource
-        configurationViewController.showConfigurationSegueIdentifier = "Show Configuration Segue"
+        configurationDataSource.dataView = configurationViewController
 
-        configurationViewController.configure()
+        configurationViewController.tableView.dataSource = configurationDataSource
+        configurationViewController.dataSource = configurationDataSource
+        configurationViewController.showConfigurationSegueIdentifier = "Show Configuration Segue"
     }
 
 }
