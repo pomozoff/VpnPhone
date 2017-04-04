@@ -74,10 +74,10 @@ class CertificateUrlViewController: UIViewController,
             guard let strongSelf = self else {
                 return
             }
+
             defer {
                 DispatchQueue.main.async {
                     strongSelf.isDownloading = false
-                    strongSelf.navigationController?.popViewController(animated: true)
                 }
             }
 
@@ -107,7 +107,12 @@ class CertificateUrlViewController: UIViewController,
         }
 
         DispatchQueue.main.async { [weak self] in
-            self?.vpnConfigurationStorage?.certificate = (label, passphrase, url.absoluteString)
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.vpnConfigurationStorage?.certificate = (label, passphrase, url.absoluteString)
+            strongSelf.navigationController?.popViewController(animated: true)
         }
     }
 

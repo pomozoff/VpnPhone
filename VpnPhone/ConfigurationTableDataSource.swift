@@ -16,6 +16,7 @@ protocol MemoryConsumer: class {
 
 protocol DataSource: class {
 
+    subscript(index: Int) -> VpnConfiguration { get }
     func insert(new element: VpnConfiguration)
 
 }
@@ -81,6 +82,14 @@ class ConfigurationTableDataSource: NSObject,
         cell.vpn = data[indexPath.row]
 
         return cell
+    }
+
+    // MARK: - Subscript
+
+    subscript(index: Int) -> VpnConfiguration {
+        get {
+            return data[index]
+        }
     }
 
     // MARK: - Private

@@ -24,14 +24,15 @@ class ApplicationInitializer: NSObject {
     // MARK: - Private
 
     private func assembly() {
-        let configurationViewController = navigationController.topViewController as! ConfigurationTableViewController
+        let configurationTableViewController = navigationController.topViewController as! ConfigurationTableViewController
         let configurationDataSource = ConfigurationTableDataSource(cellReuseIdentidier: "Vpn Configuration Cell")
 
-        configurationDataSource.dataView = configurationViewController
+        configurationDataSource.dataView = configurationTableViewController
 
-        configurationViewController.tableView.dataSource = configurationDataSource
-        configurationViewController.dataSource = configurationDataSource
-        configurationViewController.showConfigurationSegueIdentifier = "Show Configuration Segue"
+        configurationTableViewController.tableView.dataSource = configurationDataSource
+        configurationTableViewController.dataSource = configurationDataSource
+        configurationTableViewController.showConfigurationSegueIdentifier = "Show Configuration Segue"
+        configurationTableViewController.vpnManager = VpnManagerImpl()
     }
 
 }
