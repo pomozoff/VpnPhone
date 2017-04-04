@@ -23,8 +23,8 @@ public class KeychainService: NSObject {
 
     class func saveCertificate(named label: String, passphrase: String, data: Data) -> SecIdentity? {
         let options = [
-            kSecImportExportPassphrase as String: passphrase
-            , kSecAttrLabel as String: label
+            kSecImportExportPassphrase as String: passphrase,
+            kSecAttrLabel as String: label
         ]
 
         var importResult: CFArray?

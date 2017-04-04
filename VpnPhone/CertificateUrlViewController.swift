@@ -101,7 +101,7 @@ class CertificateUrlViewController: UIViewController,
             return
         }
 
-        guard let _ = KeychainService.saveCertificate(named: label, passphrase: passphrase, data: certificate) else {
+        guard nil != KeychainService.saveCertificate(named: label, passphrase: passphrase, data: certificate) else {
             print("Identity is nil")
             return
         }
