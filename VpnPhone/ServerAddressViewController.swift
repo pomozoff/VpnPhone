@@ -8,22 +8,21 @@
 
 import UIKit
 
-protocol ServerAddressEditor: ServerAddressStorage {
-    var serverAddressStorage: ServerAddressStorage? { get set }
-}
-
 class ServerAddressViewController: UIViewController,
-                                   ServerAddressEditor {
+                                   VpnConfigurationEditor,
+                                   ServerAddressStorage {
 
     // MARK: - Outlets
 
     @IBOutlet weak var serverAddressLabel: UITextField!
 
-    // MARK: - Properties
+    // MARK: - ServerAddressStorage
 
     var serverAddress: String?
 
-    weak var serverAddressStorage: ServerAddressStorage?
+    // MARK: - VpnConfigurationEditor
+
+    weak var vpnConfigurationStorage: VpnConfigurationStorage?
 
     // MARK: - Life cycle
 
@@ -41,7 +40,7 @@ class ServerAddressViewController: UIViewController,
     // MARK: - Actions
 
     @IBAction func didTapOnSaveButton(_ sender: UIBarButtonItem) {
-        serverAddressStorage?.serverAddress = serverAddressLabel.text
+        vpnConfigurationStorage?.serverAddress = serverAddressLabel.text
         navigationController?.popViewController(animated: true)
     }
 

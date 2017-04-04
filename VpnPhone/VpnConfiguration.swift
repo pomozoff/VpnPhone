@@ -8,11 +8,13 @@
 
 import Foundation
 
+typealias Certificate = (label: String, passphrase: String, url: String)
+
 struct VpnConfiguration {
 
-    var uuid = UUID()
-    var address: String = ""
-    var identity: Data?
+    var uuid = UUID().uuidString
+    var address = ""
+    var certificate: Certificate?
 
 }
 

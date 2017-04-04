@@ -15,14 +15,25 @@ protocol VpnConfigured {
 protocol ServerAddressStorage: class {
     var serverAddress: String? { get set }
 }
+protocol CertificateStorage: class {
+    var certificate: Certificate? { get set }
+}
+
+protocol VpnConfigurationStorage: ServerAddressStorage, CertificateStorage {
+}
+
+protocol VpnConfigurationEditor: class {
+    var vpnConfigurationStorage: VpnConfigurationStorage? { get set }
+}
 
 class ConfigurationViewController: UITableViewController,
                                    VpnConfigured,
-                                   ServerAddressStorage {
+                                   VpnConfigurationStorage {
 
     // MARK: - Outlets
 
     @IBOutlet var serverAddressLabel: UILabel!
+    @IBOutlet var certificateLabel: UILabel!
 
     // MARK: - VpnConfigured
 
@@ -35,7 +46,15 @@ class ConfigurationViewController: UITableViewController,
             guard let address = serverAddress else {
                 return
             }
-            updateData(with: address)
+            updateServerAddress(with: address)
+        }
+    }
+    var certificate: Certificate? {
+        didSet {
+            guard let certificate = certificate, let url = URL(string: certificate.url) else {
+                return
+            }
+            certificateLabel.text = url.lastPathComponent
         }
     }
 
@@ -46,11 +65,8 @@ class ConfigurationViewController: UITableViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let vpn = vpn else {
-            return
-        }
-
-        updateData(with: vpn.address)
+        serverAddress = vpn?.address
+        certificate = vpn?.certificate
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,11 +78,13 @@ class ConfigurationViewController: UITableViewController,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case .some("Show Server Address Segue"):
-            let vc = segue.destination as! ServerAddressEditor
-            vc.serverAddress = serverAddressLabel.text
-            vc.serverAddressStorage = self
+            let vc = segue.destination as! VpnConfigurationEditor & ServerAddressStorage
+            vc.serverAddress = serverAddress
+            vc.vpnConfigurationStorage = self
         case .some("Show Certificate URL Segue"):
-            break
+            let vc = segue.destination as! VpnConfigurationEditor & CertificateStorage
+            vc.certificate = certificate
+            vc.vpnConfigurationStorage = self
         default:
             print("Unknown segue with the identifier: \(String(describing: segue.identifier))")
             break
@@ -76,19 +94,26 @@ class ConfigurationViewController: UITableViewController,
     // MARK: - Actions
 
     @IBAction func didTapOnSaveButton(_ sender: UIBarButtonItem) {
-        guard let address = serverAddressLabel.text else {
+        guard let address = serverAddress else {
+            print("Server address is nil")
+            return
+        }
+        guard let certificate = certificate else {
+            print("Certificate is nil")
             return
         }
 
         var vpn = self.vpn == nil ? VpnConfiguration() : self.vpn!
 
         vpn.address = address
+        vpn.certificate = certificate
+
         dataSource?.insert(new: vpn)
 
         navigationController?.popViewController(animated: true)
     }
 
-    private func updateData(with text: String) {
+    private func updateServerAddress(with text: String) {
         serverAddressLabel.text = text
         title = text
     }

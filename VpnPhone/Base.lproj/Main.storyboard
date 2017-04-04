@@ -89,7 +89,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0.0.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wj-vf-9kR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wj-vf-9kR">
                                                     <rect key="frame" x="131.5" y="12" width="235.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +159,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="certificateLabel" destination="uSd-uX-SbX" id="nXl-X3-E1o"/>
                         <outlet property="serverAddressLabel" destination="2wj-vf-9kR" id="UaG-61-PHk"/>
                     </connections>
                 </tableViewController>
@@ -242,7 +243,7 @@
         <!--Certificate-->
         <scene sceneID="dTB-i9-ieU">
             <objects>
-                <viewController id="YzV-a2-8YT" sceneMemberID="viewController">
+                <viewController id="YzV-a2-8YT" customClass="CertificateUrlViewController" customModule="VpnPhone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YCx-Cg-mk0"/>
                         <viewControllerLayoutGuide type="bottom" id="bGd-jp-0oK"/>
@@ -252,44 +253,88 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWW-1U-gnq" userLabel="URL Label">
-                                <rect key="frame" x="16" y="72" width="32.5" height="30"/>
+                                <rect key="frame" x="16" y="72" width="89.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NxC-MV-Fmg" userLabel="URL Text Field">
-                                <rect key="frame" x="56" y="72" width="303" height="30"/>
+                                <rect key="frame" x="113" y="72" width="246" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YzV-a2-8YT" id="vhH-7Z-1F8"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54d-h6-Wyz" userLabel="Status">
-                                <rect key="frame" x="16" y="110" width="343" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWD-bm-qJE" userLabel="Passphrase Label">
+                                <rect key="frame" x="16" y="110" width="89" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Nz-Ry-y1T">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgq-ZE-aT8" userLabel="Passphrase Text Field">
+                                <rect key="frame" x="113" y="110" width="246" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YzV-a2-8YT" id="6dr-BA-2rE"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls8-MJ-v8a" userLabel="Name Label">
+                                <rect key="frame" x="16" y="148" width="89" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ug9-Ic-cBS" userLabel="Name Text Field">
+                                <rect key="frame" x="113" y="148" width="246" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YzV-a2-8YT" id="Noc-97-BE9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XWD-bm-qJE" firstAttribute="leading" secondItem="DWW-1U-gnq" secondAttribute="leading" id="1y5-KC-ABv"/>
+                            <constraint firstItem="ug9-Ic-cBS" firstAttribute="leading" secondItem="ls8-MJ-v8a" secondAttribute="trailing" constant="8" id="22p-3Z-yx9"/>
+                            <constraint firstItem="ls8-MJ-v8a" firstAttribute="top" secondItem="XWD-bm-qJE" secondAttribute="bottom" constant="8" id="4T2-tV-tVm"/>
                             <constraint firstItem="DWW-1U-gnq" firstAttribute="leading" secondItem="aQy-Vc-s0f" secondAttribute="leadingMargin" id="5Ah-PD-GNI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ug9-Ic-cBS" secondAttribute="trailing" id="5ZO-uS-Qhb"/>
+                            <constraint firstItem="ls8-MJ-v8a" firstAttribute="top" secondItem="ug9-Ic-cBS" secondAttribute="top" id="DS3-fM-m1Z"/>
+                            <constraint firstItem="qgq-ZE-aT8" firstAttribute="leading" secondItem="XWD-bm-qJE" secondAttribute="trailing" constant="8" id="Df8-dl-UqQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NxC-MV-Fmg" secondAttribute="trailing" id="E59-Ug-uhW"/>
                             <constraint firstItem="NxC-MV-Fmg" firstAttribute="leading" secondItem="DWW-1U-gnq" secondAttribute="trailing" constant="8" id="HI1-cT-DlI"/>
+                            <constraint firstItem="qgq-ZE-aT8" firstAttribute="leading" secondItem="NxC-MV-Fmg" secondAttribute="leading" id="IxE-dX-Vv3"/>
                             <constraint firstItem="DWW-1U-gnq" firstAttribute="top" secondItem="NxC-MV-Fmg" secondAttribute="top" id="KQ5-ce-see"/>
+                            <constraint firstItem="qgq-ZE-aT8" firstAttribute="leading" secondItem="XWD-bm-qJE" secondAttribute="trailing" constant="8" id="Xmb-ha-QC9"/>
+                            <constraint firstItem="XWD-bm-qJE" firstAttribute="top" secondItem="qgq-ZE-aT8" secondAttribute="top" id="YRJ-fc-6h9"/>
+                            <constraint firstItem="XWD-bm-qJE" firstAttribute="height" secondItem="qgq-ZE-aT8" secondAttribute="height" id="ZkE-Nn-65a"/>
                             <constraint firstItem="DWW-1U-gnq" firstAttribute="height" secondItem="NxC-MV-Fmg" secondAttribute="height" id="aoe-OX-lLi"/>
+                            <constraint firstItem="ls8-MJ-v8a" firstAttribute="height" secondItem="ug9-Ic-cBS" secondAttribute="height" id="bl2-wk-4ob"/>
                             <constraint firstItem="DWW-1U-gnq" firstAttribute="top" secondItem="YCx-Cg-mk0" secondAttribute="bottom" constant="8" id="dd4-je-0s7"/>
-                            <constraint firstItem="54d-h6-Wyz" firstAttribute="leading" secondItem="aQy-Vc-s0f" secondAttribute="leadingMargin" id="lJG-p0-Rq5"/>
-                            <constraint firstItem="54d-h6-Wyz" firstAttribute="trailing" secondItem="aQy-Vc-s0f" secondAttribute="trailingMargin" id="lvr-0x-cMj"/>
-                            <constraint firstItem="54d-h6-Wyz" firstAttribute="top" secondItem="NxC-MV-Fmg" secondAttribute="bottom" constant="8" id="qfb-L0-p6J"/>
+                            <constraint firstItem="ls8-MJ-v8a" firstAttribute="leading" secondItem="XWD-bm-qJE" secondAttribute="leading" id="hKg-Ph-IGc"/>
+                            <constraint firstItem="ug9-Ic-cBS" firstAttribute="leading" secondItem="qgq-ZE-aT8" secondAttribute="leading" id="q47-bP-GN4"/>
+                            <constraint firstItem="qgq-ZE-aT8" firstAttribute="trailing" secondItem="aQy-Vc-s0f" secondAttribute="trailingMargin" id="qSh-lZ-oRI"/>
+                            <constraint firstItem="XWD-bm-qJE" firstAttribute="top" secondItem="DWW-1U-gnq" secondAttribute="bottom" constant="8" id="yDO-OB-zoo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Certificate" id="UFd-fO-BRB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lWB-E2-p0y"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lWB-E2-p0y">
+                            <connections>
+                                <action selector="didTapOnSaveButton:" destination="YzV-a2-8YT" id="p7f-NL-878"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="certificateUrl" destination="NxC-MV-Fmg" id="pVl-vF-pP4"/>
+                        <outlet property="label" destination="ug9-Ic-cBS" id="OqA-H8-JiC"/>
+                        <outlet property="password" destination="qgq-ZE-aT8" id="2Cu-d2-hff"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ses-2o-a5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

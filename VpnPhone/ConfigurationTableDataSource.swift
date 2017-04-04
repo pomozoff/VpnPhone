@@ -32,6 +32,9 @@ class ConfigurationTableDataSource: NSObject,
 
     var data: [VpnConfiguration] {
         didSet {
+            let exportData = data.map { [$0.uuid, $0.address, $0.certificate?.label, $0.certificate?.passphrase, $0.certificate?.url] }
+            UserDefaults.standard.set(exportData, forKey: keyOfStoredUrl)
+
             // FIXME: Для быстроты.
             dataView?.reloadData()
         }
@@ -48,8 +51,21 @@ class ConfigurationTableDataSource: NSObject,
     // MARK: - Life cycle
 
     init(cellReuseIdentidier: String) {
+        let data: [VpnConfiguration]
+        if let importData = UserDefaults.standard.value(forKey: keyOfStoredUrl) as? [Any] {
+            data = importData.map {
+                let element = $0 as! [String]
+                let vpn = VpnConfiguration( uuid: element[0],
+                                            address: element[1],
+                                            certificate: (label: element[2], passphrase: element[3], url: element[4]) )
+                return vpn
+            }
+        } else {
+            data = [VpnConfiguration]()
+        }
+
         self.cellReuseIdentidier = cellReuseIdentidier
-        self.data = self.savedData
+        self.data = data
 
         super.init()
     }
@@ -69,11 +85,8 @@ class ConfigurationTableDataSource: NSObject,
 
     // MARK: - Private
 
+    private let keyOfStoredUrl = "VPN Configurations"
     private let cellReuseIdentidier: String
-    private let savedData = {
-        // TODO: Read from User​Defaults
-        return [VpnConfiguration]()
-    }()
 
 }
 
